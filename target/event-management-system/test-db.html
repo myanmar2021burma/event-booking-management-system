@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Connection Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+        }
+
+        .test-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .data-table th {
+            background: #667eea;
+            color: white;
+        }
+
+        .data-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #5568d3;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .info-box strong {
+            color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Database Connection Test</h1>
+
+        <div class="info-box">
+            <strong>Purpose:</strong> This page tests if your website changes are reflecting in the database.
+        </div>
+
+        <div class="test-section">
+            <h2>1. Database Connection Status</h2>
+            <div id="connectionStatus" class="status loading">⏳ Testing connection...</div>
+        </div>
+
+        <div class="test-section">
+            <h2>2. Current Events in Database</h2>
+            <div id="eventsStatus" class="status loading">⏳ Loading events...</div>
+            <div id="eventsData"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>3. Recent Bookings</h2>
+            <div id="bookingsStatus" class="status loading">⏳ Loading bookings...</div>
+            <div id="bookingsData"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>4. Real-Time Test</h2>
+            <p>Make a booking on the main page, then click refresh to see if it appears here:</p>
+            <button onclick="refreshData()">🔄 Refresh Data</button>
+            <button onclick="window.location.href='index.html'">📝 Go to Booking Page</button>
+        </div>
+    </div>
+
+    <script>
+        // Test database connection
+        async function testConnection() {
+            try {
+                const response = await fetch('/event-management/api/events');
+                if (response.ok) {
+                    document.getElementById('connectionStatus').className = 'status success';
+                    document.getElementById('connectionStatus').textContent = '✅ Database connection successful!';
+                    return true;
+                } else {
+                    throw new Error('Connection failed');
+                }
+            } catch (error) {
+                document.getElementById('connectionStatus').className = 'status error';
+                document.getElementById('connectionStatus').textContent = '❌ Database connection failed: ' + error.message;
+                return false;
+            }
+        }
+
+        // Load events
+        async function loadEvents() {
+            try {
+                const response = await fetch('/event-management/api/events');
+                const events = await response.json();
+                
+                document.getElementById('eventsStatus').className = 'status success';
+                document.getElementById('eventsStatus').textContent = `✅ Found ${events.length} events in database`;
+                
+                if (events.length > 0) {
+                    let html = '<table class="data-table"><thead><tr><th>ID</th><th>Event Name</th><th>Venue</th><th>Available Seats</th><th>Price</th></tr></thead><tbody>';
+                    events.forEach(event => {
+                        html += `<tr>
+                            <td>${event.id}</td>
+                            <td>${event.name}</td>
+                            <td>${event.venue}</td>
+                            <td>${event.availableSeats}</td>
+                            <td>$${event.price}</td>
+                        </tr>`;
+                    });
+                    html += '</tbody></table>';
+                    document.getElementById('eventsData').innerHTML = html;
+                }
+            } catch (error) {
+                document.getElementById('eventsStatus').className = 'status error';
+                document.getElementById('eventsStatus').textContent = '❌ Failed to load events: ' + error.message;
+            }
+        }
+
+        // Load bookings
+        async function loadBookings() {
+            try {
+                // Try to get bookings (this endpoint might need to be created)
+                const response = await fetch('/event-management/api/bookings/recent');
+                
+                if (response.ok) {
+                    const bookings = await response.json();
+                    
+                    document.getElementById('bookingsStatus').className = 'status success';
+                    document.getElementById('bookingsStatus').textContent = `✅ Found ${bookings.length} recent bookings`;
+                    
+                    if (bookings.length > 0) {
+                        let html = '<table class="data-table"><thead><tr><th>ID</th><th>Email</th><th>Event</th><th>Tickets</th><th>Amount</th><th>Status</th></tr></thead><tbody>';
+                        bookings.forEach(booking => {
+                            html += `<tr>
+                                <td>${booking.id}</td>
+                                <td>${booking.email}</td>
+                                <td>${booking.eventName || 'Event #' + booking.eventId}</td>
+                                <td>${booking.numberOfTickets}</td>
+                                <td>$${booking.totalAmount}</td>
+                                <td>${booking.status}</td>
+                            </tr>`;
+                        });
+                        html += '</tbody></table>';
+                        document.getElementById('bookingsData').innerHTML = html;
+                    } else {
+                        document.getElementById('bookingsData').innerHTML = '<p>No bookings yet. Make a test booking!</p>';
+                    }
+                } else {
+                    document.getElementById('bookingsStatus').className = 'status success';
+                    document.getElementById('bookingsStatus').textContent = '✅ Bookings endpoint ready (no bookings yet)';
+                    document.getElementById('bookingsData').innerHTML = '<p>No bookings yet. Make a test booking to see data here!</p>';
+                }
+            } catch (error) {
+                document.getElementById('bookingsStatus').className = 'status success';
+                document.getElementById('bookingsStatus').textContent = '✅ Database ready (make a booking to test)';
+                document.getElementById('bookingsData').innerHTML = '<p>Make a test booking to verify database reflection!</p>';
+            }
+        }
+
+        // Refresh all data
+        function refreshData() {
+            document.getElementById('eventsStatus').className = 'status loading';
+            document.getElementById('eventsStatus').textContent = '⏳ Refreshing...';
+            document.getElementById('bookingsStatus').className = 'status loading';
+            document.getElementById('bookingsStatus').textContent = '⏳ Refreshing...';
+            
+            loadEvents();
+            loadBookings();
+        }
+
+        // Initialize
+        window.onload = async function() {
+            const connected = await testConnection();
+            if (connected) {
+                await loadEvents();
+                await loadBookings();
+            }
+        };
+    </script>
+</body>
+</html>

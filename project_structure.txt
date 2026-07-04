@@ -1,0 +1,199 @@
+Folder PATH listing
+Volume serial number is 64D0-065D
+C:.
+³   .gitignore
+³   DATABASE_GUIDE.md
+³   GITHUB_README.md
+³   pom.xml
+³   project_structure.txt
+³   PUSH_TO_GITHUB.md
+³   QUICKSTART.md
+³   README.md
+³   run.sh
+³   setup.sh
+³   view_database.sh
+³   
+ÃÄÄÄevent-management-system
+³   ³   AUTHENTICATION_GUIDE.md
+³   ³   check_database.sh
+³   ³   GET_STARTED.md
+³   ³   HOSTING_AND_DATABASE_GUIDE.md
+³   ³   INDEX.md
+³   ³   OOP_CONCEPTS_EXPLAINED.md
+³   ³   pom.xml
+³   ³   PROJECT_STRUCTURE.md
+³   ³   QUICKSTART.md
+³   ³   QUICK_ANSWERS.md
+³   ³   README.md
+³   ³   START_HERE.md
+³   ³   SUMMARY.md
+³   ³   SYSTEM_FLOW.md
+³   ³   
+³   ÃÄÄÄdatabase
+³   ³       auth_schema.sql
+³   ³       schema.sql
+³   ³       SETUP_INSTRUCTIONS.md
+³   ³       
+³   ÃÄÄÄsrc
+³   ³   ÀÄÄÄmain
+³   ³       ÃÄÄÄjava
+³   ³       ³   ÀÄÄÄcom
+³   ³       ³       ÀÄÄÄeventmanagement
+³   ³       ³           ÃÄÄÄcontroller
+³   ³       ³           ³       AuthServlet.java
+³   ³       ³           ³       BaseServlet.java
+³   ³       ³           ³       BookingServlet.java
+³   ³       ³           ³       EventServlet.java
+³   ³       ³           ³       LocalDateTimeAdapter.java
+³   ³       ³           ³       
+³   ³       ³           ÃÄÄÄdao
+³   ³       ³           ³       AdminDAO.java
+³   ³       ³           ³       AdminDAOImpl.java
+³   ³       ³           ³       BookingDAO.java
+³   ³       ³           ³       BookingDAOImpl.java
+³   ³       ³           ³       EventDAO.java
+³   ³       ³           ³       EventDAOImpl.java
+³   ³       ³           ³       UserDAO.java
+³   ³       ³           ³       UserDAOImpl.java
+³   ³       ³           ³       
+³   ³       ³           ÃÄÄÄmodel
+³   ³       ³           ³       Admin.java
+³   ³       ³           ³       Booking.java
+³   ³       ³           ³       Event.java
+³   ³       ³           ³       User.java
+³   ³       ³           ³       
+³   ³       ³           ÀÄÄÄutil
+³   ³       ³                   CorsFilter.java
+³   ³       ³                   DatabaseUtil.java
+³   ³       ³                   
+³   ³       ÀÄÄÄwebapp
+³   ³           ³   admin-dashboard.html
+³   ³           ³   home.html
+³   ³           ³   index.html
+³   ³           ³   index.jsp
+³   ³           ³   login.html
+³   ³           ³   register.html
+³   ³           ³   test-db.html
+³   ³           ³   user-dashboard.html
+³   ³           ³   
+³   ³           ÃÄÄÄerror
+³   ³           ³       404.html
+³   ³           ³       500.html
+³   ³           ³       
+³   ³           ÃÄÄÄresources
+³   ³           ³   ÃÄÄÄcss
+³   ³           ³   ³       auth.css
+³   ³           ³   ³       dashboard.css
+³   ³           ³   ³       style.css
+³   ³           ³   ³       theme.css
+³   ³           ³   ³       
+³   ³           ³   ÀÄÄÄjs
+³   ³           ³           admin-dashboard.js
+³   ³           ³           app.js
+³   ³           ³           auth.js
+³   ³           ³           user-dashboard.js
+³   ³           ³           
+³   ³           ÀÄÄÄWEB-INF
+³   ³                   web.xml
+³   ³                   
+³   ÀÄÄÄtarget
+³       ÃÄÄÄclasses
+³       ³   ÀÄÄÄcom
+³       ³       ÀÄÄÄeventmanagement
+³       ³           ÃÄÄÄcontroller
+³       ³           ³       AuthServlet.class
+³       ³           ³       BaseServlet.class
+³       ³           ³       BookingServlet.class
+³       ³           ³       EventServlet.class
+³       ³           ³       LocalDateTimeAdapter.class
+³       ³           ³       
+³       ³           ÃÄÄÄdao
+³       ³           ³       AdminDAO.class
+³       ³           ³       AdminDAOImpl.class
+³       ³           ³       BookingDAO.class
+³       ³           ³       BookingDAOImpl.class
+³       ³           ³       EventDAO.class
+³       ³           ³       EventDAOImpl.class
+³       ³           ³       UserDAO.class
+³       ³           ³       UserDAOImpl.class
+³       ³           ³       
+³       ³           ÃÄÄÄmodel
+³       ³           ³       Admin.class
+³       ³           ³       Booking.class
+³       ³           ³       Event.class
+³       ³           ³       User.class
+³       ³           ³       
+³       ³           ÀÄÄÄutil
+³       ³                   CorsFilter.class
+³       ³                   DatabaseUtil.class
+³       ³                   
+³       ÃÄÄÄgenerated-sources
+³       ³   ÀÄÄÄannotations
+³       ÀÄÄÄmaven-status
+³           ÀÄÄÄmaven-compiler-plugin
+³               ÀÄÄÄcompile
+³                   ÀÄÄÄdefault-compile
+³                           createdFiles.lst
+³                           inputFiles.lst
+³                           
+ÃÄÄÄsql
+³       setup_database.sql
+³       
+ÃÄÄÄsrc
+³   ÀÄÄÄmain
+³       ÀÄÄÄjava
+³           ÀÄÄÄcom
+³               ÀÄÄÄeventmanagement
+³                   ³   EventManagementApp.java
+³                   ³   
+³                   ÃÄÄÄdao
+³                   ³       BookingDAO.java
+³                   ³       EventDAO.java
+³                   ³       UserDAO.java
+³                   ³       
+³                   ÃÄÄÄmodel
+³                   ³       Booking.java
+³                   ³       Event.java
+³                   ³       User.java
+³                   ³       
+³                   ÃÄÄÄservice
+³                   ³       BookingService.java
+³                   ³       EventService.java
+³                   ³       UserService.java
+³                   ³       
+³                   ÀÄÄÄutil
+³                           DatabaseUtil.java
+³                           
+ÀÄÄÄtarget
+    ÃÄÄÄclasses
+    ³   ÀÄÄÄcom
+    ³       ÀÄÄÄeventmanagement
+    ³           ³   EventManagementApp.class
+    ³           ³   
+    ³           ÃÄÄÄdao
+    ³           ³       BookingDAO.class
+    ³           ³       EventDAO.class
+    ³           ³       UserDAO.class
+    ³           ³       
+    ³           ÃÄÄÄmodel
+    ³           ³       Booking.class
+    ³           ³       Event.class
+    ³           ³       User.class
+    ³           ³       
+    ³           ÃÄÄÄservice
+    ³           ³       BookingService.class
+    ³           ³       EventService.class
+    ³           ³       UserService.class
+    ³           ³       
+    ³           ÀÄÄÄutil
+    ³                   DatabaseUtil.class
+    ³                   
+    ÃÄÄÄgenerated-sources
+    ³   ÀÄÄÄannotations
+    ÀÄÄÄmaven-status
+        ÀÄÄÄmaven-compiler-plugin
+            ÀÄÄÄcompile
+                ÀÄÄÄdefault-compile
+                        createdFiles.lst
+                        inputFiles.lst
+                        

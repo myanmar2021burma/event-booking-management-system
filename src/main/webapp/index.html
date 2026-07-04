@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management & Ticket Booking System</title>
+    <link rel="stylesheet" href="resources/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>🎫 Event Manager</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#events" class="nav-link active">Events</a></li>
+                <li><a href="#bookings" class="nav-link">My Bookings</a></li>
+                <li><a href="#admin" class="nav-link">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Events Section -->
+            <section id="events" class="section active">
+                <div class="section-header">
+                    <h2>Upcoming Events</h2>
+                    <p>Browse and book tickets for exciting events</p>
+                </div>
+                
+                <div id="events-grid" class="events-grid">
+                    <!-- Events will be loaded here dynamically -->
+                    <div class="loading">Loading events...</div>
+                </div>
+            </section>
+
+            <!-- My Bookings Section -->
+            <section id="bookings" class="section">
+                <div class="section-header">
+                    <h2>My Bookings</h2>
+                    <p>View and manage your event bookings</p>
+                </div>
+                
+                <div class="search-box">
+                    <input type="email" id="search-email" placeholder="Enter your email to view bookings">
+                    <button onclick="searchBookings()" class="btn btn-primary">Search</button>
+                </div>
+                
+                <div id="bookings-list" class="bookings-list">
+                    <!-- Bookings will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Admin Section -->
+            <section id="admin" class="section">
+                <div class="section-header">
+                    <h2>Admin Panel</h2>
+                    <p>Manage events and view all bookings</p>
+                </div>
+                
+                <div class="admin-tabs">
+                    <button class="tab-btn active" onclick="showAdminTab('create-event')">Create Event</button>
+                    <button class="tab-btn" onclick="showAdminTab('manage-events')">Manage Events</button>
+                    <button class="tab-btn" onclick="showAdminTab('all-bookings')">All Bookings</button>
+                </div>
+                
+                <!-- Create Event Tab -->
+                <div id="create-event" class="admin-tab active">
+                    <form id="event-form" class="form">
+                        <div class="form-group">
+                            <label for="event-name">Event Name *</label>
+                            <input type="text" id="event-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="event-description">Description</label>
+                            <textarea id="event-description" rows="4"></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="event-date">Event Date *</label>
+                                <input type="datetime-local" id="event-date" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="event-location">Location *</label>
+                                <input type="text" id="event-location" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="event-tickets">Available Tickets *</label>
+                                <input type="number" id="event-tickets" min="1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="event-price">Ticket Price ($) *</label>
+                                <input type="number" id="event-price" step="0.01" min="0" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success">Create Event</button>
+                    </form>
+                </div>
+                
+                <!-- Manage Events Tab -->
+                <div id="manage-events" class="admin-tab">
+                    <div id="admin-events-list" class="admin-events-list">
+                        <!-- Events will be loaded here -->
+                    </div>
+                </div>
+                
+                <!-- All Bookings Tab -->
+                <div id="all-bookings" class="admin-tab">
+                    <div id="admin-bookings-list" class="admin-bookings-list">
+                        <!-- All bookings will be loaded here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBookingModal()">&times;</span>
+            <h2>Book Tickets</h2>
+            <div id="modal-event-details"></div>
+            
+            <form id="booking-form" class="form">
+                <input type="hidden" id="booking-event-id">
+                
+                <div class="form-group">
+                    <label for="customer-name">Your Name *</label>
+                    <input type="text" id="customer-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customer-email">Your Email *</label>
+                    <input type="email" id="customer-email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="num-tickets">Number of Tickets *</label>
+                    <input type="number" id="num-tickets" min="1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Total Amount: $<span id="total-amount">0.00</span></label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Event Management System. Built with Java & OOP Concepts.</p>
+        </div>
+    </footer>
+
+    <script src="resources/js/app.js"></script>
+</body>
+</html>

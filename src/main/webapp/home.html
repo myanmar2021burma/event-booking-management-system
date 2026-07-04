@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENT - The Event Booking Site</title>
+    <link rel="stylesheet" href="resources/css/theme.css">
+</head>
+<body>
+    <div class="landing-container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="logo">
+                    <span class="logo-icon">🎫</span>
+                    <h1>EVENT</h1>
+                </div>
+                <p class="tagline">The Event Booking Site - Your Gateway to Unforgettable Events</p>
+                <p class="description">
+                    Discover, book, and manage tickets for the most exciting events in your city. 
+                    From concerts to conferences, we've got you covered.
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="window.location.href='login.html'">
+                        <span>Get Started</span>
+                        <span class="arrow">→</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToFeatures()">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="event-card-preview">
+                    <div class="preview-card">
+                        <div class="preview-icon">🎵</div>
+                        <h3>Music Festivals</h3>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-icon">🎤</div>
+                        <h3>Conferences</h3>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-icon">🎨</div>
+                        <h3>Art Exhibitions</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section" id="features">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎟️</div>
+                    <h3>Easy Booking</h3>
+                    <p>Book your tickets in just a few clicks. Simple, fast, and secure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Payments</h3>
+                    <p>Your transactions are protected with industry-standard security.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access your tickets anytime, anywhere on any device.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Confirmation</h3>
+                    <p>Get your tickets immediately after booking. No waiting!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Best Events</h3>
+                    <p>Curated selection of the hottest events in your area.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>24/7 Support</h3>
+                    <p>Our team is always here to help you with any questions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="stat-item">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Events Hosted</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Tickets Sold</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.9★</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Experience Amazing Events?</h2>
+            <p>Join thousands of event-goers and start your journey today!</p>
+            <button class="btn btn-primary btn-large" onclick="window.location.href='login.html'">
+                <span>Login / Register Now</span>
+                <span class="arrow">→</span>
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>EVENT</h4>
+                    <p>Your trusted partner for event ticketing and management.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Register</a></li>
+                        <li><a href="#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: support@eventmanagement.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EVENT - The Event Booking Site. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function scrollToFeatures() {
+            document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

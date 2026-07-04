@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - EVENTIE</title>
+    <link rel="stylesheet" href="resources/css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo-icon">🎫</span>
+                <span class="brand-name">EVENT</span>
+            </div>
+            <div class="nav-user">
+                <span class="user-greeting">Welcome, <span id="user-name">User</span>!</span>
+                <button class="btn btn-logout" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-section="browse-events">
+                    <span class="menu-icon">🎉</span>
+                    <span class="menu-text">Browse Events</span>
+                </li>
+                <li class="menu-item" data-section="my-bookings">
+                    <span class="menu-icon">🎟️</span>
+                    <span class="menu-text">My Bookings</span>
+                </li>
+               
+                <li class="menu-item" data-section="profile">
+                    <span class="menu-icon">👤</span>
+                    <span class="menu-text">My Profile</span>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Browse Events Section -->
+            <section id="browse-events" class="content-section active">
+                <div class="section-header">
+                    <h2>Browse Events</h2>
+                    <div class="search-bar">
+                        <input type="text" id="event-search" placeholder="Search events..." onkeyup="filterEvents()">
+                    </div>
+                </div>
+                <div id="events-grid" class="events-grid">
+                    <div class="loading">Loading events...</div>
+                </div>
+            </section>
+
+            <!-- My Bookings Section -->
+<section id="my-bookings" class="content-section">
+    <div class="section-header">
+        <h2>My Bookings</h2>
+        <div class="search-bar">
+            <input type="text" id="booking-search" placeholder="Search by event name..." onkeyup="searchMyBookings()">
+        </div>
+        <button class="btn btn-refresh" onclick="loadMyBookings()">
+            <span>🔄</span> Refresh
+        </button>
+    </div>
+    <div id="my-bookings-list" class="bookings-list">
+        <div class="loading">Loading your bookings...</div>
+    </div>
+</section>
+
+           
+
+            <!-- Profile Section -->
+            <section id="profile" class="content-section">
+                <div class="section-header">
+                    <h2>My Profile</h2>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-avatar">👤</div>
+                    <div class="profile-info">
+                        <h3 id="profile-name">Loading...</h3>
+                        <p id="profile-email">Loading...</p>
+                        <p id="profile-username">Loading...</p>
+                        <p id="profile-phone">Loading...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeBookingModal()">&times;</span>
+            <h2>Book Event</h2>
+            <div id="modal-event-details"></div>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label>Number of Tickets</label>
+                    <input type="number" id="num-tickets" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Total Amount</label>
+                    <input type="text" id="total-amount" readonly>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="resources/js/user-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - EVENTIE</title>
+    <link rel="stylesheet" href="resources/css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo-icon">🎫</span>
+                <span class="brand-name">EVENT - Admin</span>
+            </div>
+            <div class="nav-user">
+                <span class="admin-badge">ADMIN</span>
+                <span class="user-greeting">Welcome, <span id="admin-name">Admin</span>!</span>
+                <button class="btn btn-logout" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-section="dashboard-overview">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">Dashboard</span>
+                </li>
+                <li class="menu-item" data-section="add-event">
+                    <span class="menu-icon">➕</span>
+                    <span class="menu-text">Add Event</span>
+                </li>
+                <li class="menu-item" data-section="manage-events">
+                    <span class="menu-icon">🎉</span>
+                    <span class="menu-text">Manage Events</span>
+                </li>
+                <li class="menu-item" data-section="all-bookings">
+                    <span class="menu-icon">🎟️</span>
+                    <span class="menu-text">All Bookings</span>
+                </li>
+                <li class="menu-item" data-section="users">
+                    <span class="menu-icon">👥</span>
+                    <span class="menu-text">Users</span>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Overview -->
+            <section id="dashboard-overview" class="content-section active">
+                <div class="section-header">
+                    <h2>Dashboard Overview</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎉</div>
+                        <div class="stat-info">
+                            <h3 id="total-events">0</h3>
+                            <p>Total Events</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎟️</div>
+                        <div class="stat-info">
+                            <h3 id="total-bookings">0</h3>
+                            <p>Total Bookings</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <h3 id="total-users">0</h3>
+                            <p>Total Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <h3 id="total-revenue">$0</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-activity">
+                    <h3>Recent Bookings</h3>
+                    <div id="recent-bookings-list" class="bookings-list"></div>
+                </div>
+            </section>
+
+            <!-- Add Event Section -->
+            <section id="add-event" class="content-section">
+                <div class="section-header">
+                    <h2>Add New Event</h2>
+                </div>
+                <form id="event-form" class="form-card">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Event Name *</label>
+                            <input type="text" id="event-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Event Date *</label>
+                            <input type="datetime-local" id="event-date" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description *</label>
+                        <textarea id="event-description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Location *</label>
+                        <input type="text" id="event-location" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Available Tickets *</label>
+                            <input type="number" id="event-tickets" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Ticket Price (MMK) *</label>
+                            <input type="number" id="event-price" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Create Event</button>
+                </form>
+            </section>
+
+            <!-- Manage Events Section -->
+            <section id="manage-events" class="content-section">
+                <div class="section-header">
+                    <h2>Manage Events</h2>
+                    <button class="btn btn-refresh" onclick="loadAllEvents()">
+                        <span>🔄</span> Refresh
+                    </button>
+                </div>
+                <div id="admin-events-grid" class="events-grid admin-view">
+                    <div class="loading">Loading events...</div>
+                </div>
+            </section>
+
+            <!-- All Bookings Section -->
+<section id="all-bookings" class="content-section">
+    <div class="section-header">
+        <h2>All Bookings</h2>
+        <div style="display: flex; gap: 10px;">
+            <input type="email" id="admin-email-search" placeholder="Enter user email...">
+            <button class="btn btn-primary" onclick="searchBookingsByEmail()">Search</button>
+            <button class="btn btn-refresh" onclick="loadAllBookings()">
+                <span>🔄</span> All Bookings
+            </button>
+        </div>
+    </div>
+    <div id="all-bookings-list" class="bookings-list">
+        <div class="loading">Loading bookings...</div>
+    </div>
+</section>
+
+            <!-- Users Section -->
+            <section id="users" class="content-section">
+                <div class="section-header">
+                    <h2>Registered Users</h2>
+                    <button class="btn btn-refresh" onclick="loadAllUsers()">
+                        <span>🔄</span> Refresh
+                    </button>
+                </div>
+                <div id="users-list" class="users-grid">
+                    <div class="loading">Loading users...</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="resources/js/admin-dashboard.js"></script>
+</body>
+</html>
